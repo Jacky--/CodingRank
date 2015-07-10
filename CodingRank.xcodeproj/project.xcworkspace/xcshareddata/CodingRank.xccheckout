@@ -7,18 +7,18 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>775B4354-3AA4-4826-BC1B-B35ADB0AEAF7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>CodingRank</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>EA93884A5ABF01E402B8A572EACB114F6CACB973</key>
 		<string>https://github.com/Jacky--/CodingRank.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CodingRank/CodingRank.xcodeproj/project.xcworkspace</string>
+	<string>CodingRank.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>EA93884A5ABF01E402B8A572EACB114F6CACB973</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Jacky--/CodingRank.git</string>
