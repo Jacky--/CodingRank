@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshTableViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
