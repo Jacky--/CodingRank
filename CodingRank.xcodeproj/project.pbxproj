@@ -15,6 +15,10 @@
 		850E97D01B4FAE2C003BC68D /* CodingRankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97CF1B4FAE2C003BC68D /* CodingRankTests.m */; };
 		850E97DC1B4FBDE0003BC68D /* JNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97DB1B4FBDE0003BC68D /* JNetworkAgent.m */; };
 		850E97DF1B4FBDFA003BC68D /* JBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97DE1B4FBDFA003BC68D /* JBaseRequest.m */; };
+		8540669A1B57F6CE000A734E /* UserRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854066991B57F6CE000A734E /* UserRankViewController.m */; };
+		8540669D1B57F6F2000A734E /* RepositoryRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540669C1B57F6F2000A734E /* RepositoryRankViewController.m */; };
+		854066A01B57F71A000A734E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540669F1B57F71A000A734E /* MoreViewController.m */; };
+		854066A31B57F761000A734E /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854066A21B57F761000A734E /* MainTabBarController.m */; };
 		858EC92D1B55469D002DD73C /* JRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 858EC92C1B55469D002DD73C /* JRefreshComponent.m */; };
 		85B4D2441B5695FB00E629E1 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85B4D23D1B5695FB00E629E1 /* arrow@2x.png */; };
 		85B4D2451B5695FB00E629E1 /* JRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B4D23F1B5695FB00E629E1 /* JRefreshFooter.m */; };
@@ -54,6 +58,14 @@
 		850E97DD1B4FBDFA003BC68D /* JBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBaseRequest.h; path = JNetwork/JBaseRequest.h; sourceTree = "<group>"; };
 		850E97DE1B4FBDFA003BC68D /* JBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBaseRequest.m; path = JNetwork/JBaseRequest.m; sourceTree = "<group>"; };
 		8538F9571B50FDA000448717 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		854066981B57F6CE000A734E /* UserRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRankViewController.h; path = UserBank/Controller/UserRankViewController.h; sourceTree = "<group>"; };
+		854066991B57F6CE000A734E /* UserRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRankViewController.m; path = UserBank/Controller/UserRankViewController.m; sourceTree = "<group>"; };
+		8540669B1B57F6F2000A734E /* RepositoryRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepositoryRankViewController.h; path = RepositoryRank/Controller/RepositoryRankViewController.h; sourceTree = "<group>"; };
+		8540669C1B57F6F2000A734E /* RepositoryRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RepositoryRankViewController.m; path = RepositoryRank/Controller/RepositoryRankViewController.m; sourceTree = "<group>"; };
+		8540669E1B57F71A000A734E /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreViewController.h; path = More/Controller/MoreViewController.h; sourceTree = "<group>"; };
+		8540669F1B57F71A000A734E /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = More/Controller/MoreViewController.m; sourceTree = "<group>"; };
+		854066A11B57F761000A734E /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = Common/MainTabBarController.h; sourceTree = "<group>"; };
+		854066A21B57F761000A734E /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarController.m; path = Common/MainTabBarController.m; sourceTree = "<group>"; };
 		858EC92B1B55469D002DD73C /* JRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRefreshComponent.h; path = JRefresh/JRefreshComponent.h; sourceTree = "<group>"; };
 		858EC92C1B55469D002DD73C /* JRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRefreshComponent.m; path = JRefresh/JRefreshComponent.m; sourceTree = "<group>"; };
 		85B4D23D1B5695FB00E629E1 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow@2x.png"; path = "JRefresh/arrow@2x.png"; sourceTree = "<group>"; };
@@ -124,6 +136,9 @@
 		850E97B21B4FAE2C003BC68D /* CodingRank */ = {
 			isa = PBXGroup;
 			children = (
+				854066941B57F679000A734E /* More */,
+				854066931B57F666000A734E /* RepositoryRank */,
+				854066921B57F65B000A734E /* UserBank */,
 				858EC92A1B554659002DD73C /* JRefresh */,
 				85CA08F51B53FBD3007659A8 /* Common */,
 				850E97D91B4FBDA0003BC68D /* JNetwork */,
@@ -175,6 +190,57 @@
 			name = JNetwork;
 			sourceTree = "<group>";
 		};
+		854066921B57F65B000A734E /* UserBank */ = {
+			isa = PBXGroup;
+			children = (
+				854066951B57F683000A734E /* Controller */,
+			);
+			name = UserBank;
+			sourceTree = "<group>";
+		};
+		854066931B57F666000A734E /* RepositoryRank */ = {
+			isa = PBXGroup;
+			children = (
+				854066961B57F68C000A734E /* Controller */,
+			);
+			name = RepositoryRank;
+			sourceTree = "<group>";
+		};
+		854066941B57F679000A734E /* More */ = {
+			isa = PBXGroup;
+			children = (
+				854066971B57F693000A734E /* Controller */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		854066951B57F683000A734E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8540669E1B57F71A000A734E /* MoreViewController.h */,
+				8540669F1B57F71A000A734E /* MoreViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		854066961B57F68C000A734E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8540669B1B57F6F2000A734E /* RepositoryRankViewController.h */,
+				8540669C1B57F6F2000A734E /* RepositoryRankViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		854066971B57F693000A734E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				854066981B57F6CE000A734E /* UserRankViewController.h */,
+				854066991B57F6CE000A734E /* UserRankViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		858EC92A1B554659002DD73C /* JRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +266,8 @@
 				85CA08FA1B53FD55007659A8 /* DebugView.m */,
 				85B4D2481B5698C900E629E1 /* RefreshTableViewController.h */,
 				85B4D2491B5698C900E629E1 /* RefreshTableViewController.m */,
+				854066A11B57F761000A734E /* MainTabBarController.h */,
+				854066A21B57F761000A734E /* MainTabBarController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -349,16 +417,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CA08FB1B53FD55007659A8 /* DebugView.m in Sources */,
+				8540669A1B57F6CE000A734E /* UserRankViewController.m in Sources */,
 				85B4D2461B5695FB00E629E1 /* JRefreshHeader.m in Sources */,
 				85B4D2451B5695FB00E629E1 /* JRefreshFooter.m in Sources */,
 				858EC92D1B55469D002DD73C /* JRefreshComponent.m in Sources */,
+				854066A01B57F71A000A734E /* MoreViewController.m in Sources */,
 				85B4D24A1B5698C900E629E1 /* RefreshTableViewController.m in Sources */,
 				850E97DC1B4FBDE0003BC68D /* JNetworkAgent.m in Sources */,
 				85CA08F81B53FC16007659A8 /* BaseNavigationController.m in Sources */,
 				850E97DF1B4FBDFA003BC68D /* JBaseRequest.m in Sources */,
 				850E97B91B4FAE2C003BC68D /* AppDelegate.m in Sources */,
+				854066A31B57F761000A734E /* MainTabBarController.m in Sources */,
 				850E97B61B4FAE2C003BC68D /* main.m in Sources */,
 				85B4D2471B5695FB00E629E1 /* UIView+JFoundation.m in Sources */,
+				8540669D1B57F6F2000A734E /* RepositoryRankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

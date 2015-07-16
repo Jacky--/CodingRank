@@ -14,15 +14,12 @@
 @property (strong, nonatomic) UILabel *stateLabel;
 
 @property (strong, nonatomic) UIImageView *arrowView;
-@property (assign, nonatomic) UIActivityIndicatorViewStyle activityIndicatorViewStyle;
 
 //设置state状态下的文字
 - (void)setTitle:(NSString *)title forState:(JRefreshState)state;
 
 //创建footer
 + (id)footerWithRefreshingBlock:(JRefreshingBlock)refreshingBlock;
-//创建footer
-+ (id)footerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
 
 //提示没有更多的数据
 - (void)noticeNoMoreData;

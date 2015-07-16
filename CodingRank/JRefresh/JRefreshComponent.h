@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "UIView+JFoundation.h"
 
-/** 刷新控件的状态 */
-typedef NS_ENUM(NSInteger , JRefreshState){
-    JRefreshStateNormal,       //普通闲置状态
-    JRefreshStatePulling,      //松开就可以进行刷新的状态
-    JRefreshStateRefreshing,   //正在刷新中的状态
-    JRefreshStateWillRefresh,  //即将刷新的状态
-    JRefreshStateNoMoreData    //所有数据加载完毕，没有更多的数据了
+//刷新控件的状态
+typedef NS_ENUM(NSInteger,JRefreshState){
+    JRefreshStateNormal,           //普通闲置状态
+    JRefreshStatePulling,          //松开就可以进行刷新的状态
+    JRefreshStateRefreshing,       //正在刷新中的状态
+    JRefreshStateWillRefresh,      //即将刷新的状态
+    JRefreshStateNoMoreData        //所有数据加载完毕，没有更多的数据了
 };
 
 //进入刷新状态的回调
@@ -24,19 +24,13 @@ typedef void (^JRefreshingBlock)();
 //刷新控件的基类
 @interface JRefreshComponent : UIView
 {
-    UIEdgeInsets _scrollViewOriginalInset;  //记录scrollView刚开始的inset
-    __weak UIScrollView *_scrollView;       //父控件
+    UIEdgeInsets _scrollViewOriginalInset;    //记录scrollView刚开始的inset
+    __weak UIScrollView *_scrollView;         //父控件
 }
 
 #pragma mark - 刷新回调
 //正在刷新的回调
 @property (copy, nonatomic) JRefreshingBlock refreshingBlock;
-//设置回调对象和回调方法
-- (void)setRefreshingTarget:(id)target refreshingAction:(SEL)action;
-//回调对象
-@property (weak, nonatomic) id refreshingTarget;
-//回调方法
-@property (assign, nonatomic) SEL refreshingAction;
 //触发回调（交给子类去调用）
 - (void)executeRefreshingCallback;
 

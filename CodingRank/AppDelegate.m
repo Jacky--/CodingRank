@@ -17,8 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    RefreshTableViewController *refreshVC = [[RefreshTableViewController alloc] init];
-    self.window.rootViewController = refreshVC;
+    RefreshTableViewController *refreshVC = [[RefreshTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController:refreshVC];
+    self.window.rootViewController = naviVC;
     [self.window makeKeyAndVisible];
     return YES;
 }

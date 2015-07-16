@@ -32,12 +32,6 @@
     cmp.refreshingBlock = refreshingBlock;
     return cmp;
 }
-+ (id)footerWithRefreshingTarget:(id)target refreshingAction:(SEL)action
-{
-    JRefreshFooter *cmp = [[self alloc] init];
-    [cmp setRefreshingTarget:target refreshingAction:action];
-    return cmp;
-}
 
 - (NSMutableDictionary *)stateTitles
 {
@@ -72,7 +66,7 @@
 - (UIActivityIndicatorView *)loadingView
 {
     if (!_loadingView) {
-        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorViewStyle];
+        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _loadingView.hidesWhenStopped = YES;
     }
     return _loadingView;
@@ -114,31 +108,30 @@
     [self setTitle:@"正在加载更多的数据..." forState:JRefreshStateRefreshing];
     [self setTitle:@"已经全部加载完毕" forState:JRefreshStateNoMoreData];
     
-//    // 设置普通状态的动画图片
-//    NSMutableArray *idleImages = [NSMutableArray array];
-//    for (NSUInteger i = 1; i<=60; i++) {
-//        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd", i]];
-//        [idleImages addObject:image];
-//    }
-//    [self setImages:idleImages forState:JRefreshStateNormal];
-//
-//    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-//    NSMutableArray *refreshingImages = [NSMutableArray array];
-//    for (NSUInteger i = 1; i<=3; i++) {
-//        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_loading_0%zd", i]];
-//        [refreshingImages addObject:image];
-//    }
-//    [self setImages:refreshingImages forState:JRefreshStatePulling];
-//
-//    // 设置正在刷新状态的动画图片
-//    [self setImages:refreshingImages forState:JRefreshStateRefreshing];
+    //    // 设置普通状态的动画图片
+    //    NSMutableArray *idleImages = [NSMutableArray array];
+    //    for (NSUInteger i = 1; i<=60; i++) {
+    //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd", i]];
+    //        [idleImages addObject:image];
+    //    }
+    //    [self setImages:idleImages forState:JRefreshStateNormal];
+    //
+    //    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
+    //    NSMutableArray *refreshingImages = [NSMutableArray array];
+    //    for (NSUInteger i = 1; i<=3; i++) {
+    //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_loading_0%zd", i]];
+    //        [refreshingImages addObject:image];
+    //    }
+    //    [self setImages:refreshingImages forState:JRefreshStatePulling];
+    //
+    //    // 设置正在刷新状态的动画图片
+    //    [self setImages:refreshingImages forState:JRefreshStateRefreshing];
     
     NSArray *images = self.stateImages[@(JRefreshStateNormal)];
     if (images.count == 0) {
         hasGifView = NO;
         [self addSubview:self.arrowView];
         [self addSubview:self.loadingView];
-        self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     }else {
         hasGifView = YES;
         [self addSubview:self.gifView];
@@ -325,7 +318,7 @@
             offset.y = self.scrollView.contentOffset.y;
             self.scrollView.contentOffset = offset;
         }
-
+        
         if (state == JRefreshStateNoMoreData) {
             if (!hasGifView) {
                 self.arrowView.hidden = YES;
@@ -402,13 +395,6 @@
     }
     // 设置状态文字
     self.stateLabel.text = self.stateTitles[@(state)];
-}
-
-- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle
-{
-    _activityIndicatorViewStyle = activityIndicatorViewStyle;
-    self.loadingView = nil;
-    [self setNeedsLayout];
 }
 
 - (void)setPullingPercent:(CGFloat)pullingPercent

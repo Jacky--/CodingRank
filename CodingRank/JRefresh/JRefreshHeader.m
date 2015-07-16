@@ -12,6 +12,7 @@
 {
     BOOL hasGifView;
 }
+
 //所有状态对应的文字
 @property (strong, nonatomic) NSMutableDictionary *stateTitles;
 @property (strong, nonatomic) UIActivityIndicatorView *loadingView;
@@ -28,13 +29,6 @@
 {
     JRefreshHeader *cmp = [[self alloc] init];
     cmp.refreshingBlock = refreshingBlock;
-    return cmp;
-}
-
-+ (id)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action
-{
-    JRefreshHeader *cmp = [[self alloc] init];
-    [cmp setRefreshingTarget:target refreshingAction:action];
     return cmp;
 }
 
@@ -85,7 +79,7 @@
 - (UIActivityIndicatorView *)loadingView
 {
     if (!_loadingView) {
-        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorViewStyle];
+        _loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _loadingView.hidesWhenStopped = YES;
     }
     return _loadingView;
@@ -119,8 +113,8 @@
 - (void)prepare
 {
     [super prepare];
-    // 设置key
-    self.lastUpdatedTimeKey = @"JRefreshHeaderLastUpdatedTimeKey";
+    //设置显示时间
+    [self setLastUpdatedTime];
     // 设置高度
     self.height = 54.0;
     // 初始化文字
@@ -128,31 +122,30 @@
     [self setTitle:@"松开立即刷新" forState:JRefreshStatePulling];
     [self setTitle:@"正在刷新数据中..." forState:JRefreshStateRefreshing];
     
-//    // 设置普通状态的动画图片
-//    NSMutableArray *idleImages = [NSMutableArray array];
-//    for (NSUInteger i = 1; i<=60; i++) {
-//        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd", i]];
-//        [idleImages addObject:image];
-//    }
-//    [self setImages:idleImages forState:JRefreshStateNormal];
-//    
-//    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-//    NSMutableArray *refreshingImages = [NSMutableArray array];
-//    for (NSUInteger i = 1; i<=3; i++) {
-//        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_loading_0%zd", i]];
-//        [refreshingImages addObject:image];
-//    }
-//    [self setImages:refreshingImages forState:JRefreshStatePulling];
-//    
-//    // 设置正在刷新状态的动画图片
-//    [self setImages:refreshingImages forState:JRefreshStateRefreshing];
+    //    // 设置普通状态的动画图片
+    //    NSMutableArray *idleImages = [NSMutableArray array];
+    //    for (NSUInteger i = 1; i<=60; i++) {
+    //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%zd", i]];
+    //        [idleImages addObject:image];
+    //    }
+    //    [self setImages:idleImages forState:JRefreshStateNormal];
+    //
+    //    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
+    //    NSMutableArray *refreshingImages = [NSMutableArray array];
+    //    for (NSUInteger i = 1; i<=3; i++) {
+    //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_loading_0%zd", i]];
+    //        [refreshingImages addObject:image];
+    //    }
+    //    [self setImages:refreshingImages forState:JRefreshStatePulling];
+    //
+    //    // 设置正在刷新状态的动画图片
+    //    [self setImages:refreshingImages forState:JRefreshStateRefreshing];
     
     NSArray *images = self.stateImages[@(JRefreshStateNormal)];
     if (images.count == 0) {
         hasGifView = NO;
         [self addSubview:self.arrowView];
         [self addSubview:self.loadingView];
-        self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     }else {
         hasGifView = YES;
         [self addSubview:self.gifView];
@@ -251,8 +244,22 @@
     [super setState:state];
     // 根据状态做事情
     if (state == JRefreshStateNormal) {
-        if (oldState != JRefreshStateRefreshing) {
-            return;
+        if (oldState == JRefreshStateRefreshing) {
+            // 保存刷新时间
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"JRefreshHeaderLastUpdatedTimeKey"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            // 恢复inset和offset
+            [UIView animateWithDuration:0.4 animations:^{
+                UIEdgeInsets inset = self.scrollView.contentInset;
+                inset.top -= self.height;
+                self.scrollView.contentInset = inset;
+                // 自动调整透明度
+                if (self.isAutoChangeAlpha) {
+                    self.alpha = 0.0;
+                }
+            } completion:^(BOOL finished) {
+                self.pullingPercent = 0.0;
+            }];
         }
         if (!hasGifView) {
             if (oldState == JRefreshStateRefreshing) {
@@ -276,21 +283,6 @@
                 }];
             }
         }
-        // 保存刷新时间
-        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"JRefreshHeaderLastUpdatedTimeKey"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        // 恢复inset和offset
-        [UIView animateWithDuration:0.4 animations:^{
-            UIEdgeInsets inset = self.scrollView.contentInset;
-            inset.top -= self.height;
-            self.scrollView.contentInset = inset;
-            // 自动调整透明度
-            if (self.isAutoChangeAlpha) {
-                self.alpha = 0.0;
-            }
-        } completion:^(BOOL finished) {
-            self.pullingPercent = 0.0;
-        }];
     } else if (state == JRefreshStateRefreshing) {
         [UIView animateWithDuration:0.25 animations:^{
             // 增加滚动区域
@@ -345,20 +337,15 @@
             }];
         }
     }
-    // 设置状态文字
+    //设置状态文字
     self.stateLabel.text = self.stateTitles[@(state)];
-    // 重新设置key（重新显示时间）
-    self.lastUpdatedTimeKey = @"JRefreshHeaderLastUpdatedTimeKey";
+    //重新显示时间
+    [self setLastUpdatedTime];
 }
 
-- (void)setLastUpdatedTimeKey:(NSString *)lastUpdatedTimeKey
+- (void)setLastUpdatedTime
 {
-    NSDate *lastUpdatedTime = [[NSUserDefaults standardUserDefaults] objectForKey:lastUpdatedTimeKey];
-    // 如果有block
-    if (self.lastUpdatedTimeText) {
-        self.lastUpdatedTimeLabel.text = self.lastUpdatedTimeText(lastUpdatedTime);
-        return;
-    }
+    NSDate *lastUpdatedTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"JRefreshHeaderLastUpdatedTimeKey"];
     if (lastUpdatedTime) {
         // 1.获得年月日
         NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -380,13 +367,6 @@
     } else {
         self.lastUpdatedTimeLabel.text = @"最后更新：无记录";
     }
-}
-
-- (void)setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle
-{
-    _activityIndicatorViewStyle = activityIndicatorViewStyle;
-    self.loadingView = nil;
-    [self setNeedsLayout];
 }
 
 - (void)setPullingPercent:(CGFloat)pullingPercent
@@ -418,7 +398,7 @@
 
 - (NSDate *)lastUpdatedTime
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:self.lastUpdatedTimeKey];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"JRefreshHeaderLastUpdatedTimeKey"];
 }
 
 - (void)setTitle:(NSString *)title forState:(JRefreshState)state

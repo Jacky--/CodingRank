@@ -87,14 +87,14 @@
     [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:options context:nil];
     [self.scrollView addObserver:self forKeyPath:@"contentSize" options:options context:nil];
     self.panGestureRecognizer = self.scrollView.panGestureRecognizer;
-    [self.panGestureRecognizer addObserver:self forKeyPath:@"panState" options:options context:nil];
+    [self.panGestureRecognizer addObserver:self forKeyPath:@"state" options:options context:nil];
 }
 
 - (void)removeObservers
 {
     [self.superview removeObserver:self forKeyPath:@"contentOffset"];
     [self.superview removeObserver:self forKeyPath:@"contentSize"];;
-    [self.panGestureRecognizer removeObserver:self forKeyPath:@"panState"];
+    [self.panGestureRecognizer removeObserver:self forKeyPath:@"state"];
     self.panGestureRecognizer = nil;
 }
 
@@ -110,7 +110,7 @@
         [self scrollViewContentSizeDidChange:change];
     } else if ([keyPath isEqualToString:@"contentInset"]) {
         [self scrollViewContentInsetDidChange:change];
-    } else if ([keyPath isEqualToString:@"panState"]) {
+    } else if ([keyPath isEqualToString:@"state"]) {
         [self scrollViewPanStateDidChange:change];
     }
 }
@@ -136,13 +136,6 @@
 }
 
 #pragma mark - 公共方法
-#pragma mark 设置回调对象和回调方法
-- (void)setRefreshingTarget:(id)target refreshingAction:(SEL)action
-{
-    self.refreshingTarget = target;
-    self.refreshingAction = action;
-}
-
 #pragma mark 进入刷新状态
 - (void)beginRefreshing
 {
@@ -205,9 +198,7 @@
         if (self.refreshingBlock) {
             self.refreshingBlock();
         }
-        if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
-            ((void(*)(void *, SEL, UIView *))objc_msgSend)((__bridge void *)(self.refreshingTarget), self.refreshingAction, self);
-        }
     });
 }
+
 @end
