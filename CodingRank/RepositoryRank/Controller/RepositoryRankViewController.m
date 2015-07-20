@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Repositories";
     // Do any additional setup after loading the view.
 }
 
