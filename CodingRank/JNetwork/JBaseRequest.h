@@ -43,9 +43,9 @@ typedef NS_ENUM(NSInteger , JRequestSerializerType) {
 @property (nonatomic, weak) id<JBaseRequestDelegate> delegate;
 @property (nonatomic, strong, readonly) NSDictionary *responseHeaders;
 @property (nonatomic, strong, readonly) NSString *responseString;
-@property (nonatomic, copy) NSString * baseUrl;//服务器地址BaseUrl
-@property (nonatomic, copy) NSString * requestUrl;//请求的URL
-@property (nonatomic, strong) NSDictionary * requestParam;//请求的参数
+@property (nonatomic, copy) NSString *baseUrl;//服务器地址BaseUrl
+@property (nonatomic, copy) NSString *requestUrl;//请求的URL
+@property (nonatomic, strong) NSDictionary *requestParam;//请求的参数
 @property (nonatomic, strong, readonly) id responseJSONObject;
 @property (nonatomic, readonly) NSInteger responseStatusCode;
 @property (nonatomic, copy) void (^successCompletionBlock)(JBaseRequest *);

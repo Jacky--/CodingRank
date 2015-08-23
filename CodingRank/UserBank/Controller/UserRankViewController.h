@@ -8,6 +8,6 @@
 
 #import "RefreshTableViewController.h"
 
-@interface UserRankViewController : RefreshTableViewController
+@interface UserRankViewController : UITableViewController
 
 @end

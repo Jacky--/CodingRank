@@ -7,17 +7,6 @@
 //
 
 #import "RefreshTableViewController.h"
-#import "JRefreshHeader.h"
-#import "JRefreshFooter.h"
-
-@interface RefreshTableViewController ()
-
-/** 下拉刷新控件 */
-@property (strong, nonatomic) JRefreshHeader *header;
-/** 上拉刷新控件 */
-@property (strong, nonatomic) JRefreshFooter *footer;
-
-@end
 
 @implementation RefreshTableViewController
 
@@ -34,7 +23,7 @@
         });
     }];
     [self.tableView addSubview:self.header];
-    [self.header beginRefreshing];
+//    [self.header beginRefreshing];
     
     self.footer = [JRefreshFooter footerWithRefreshingBlock:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

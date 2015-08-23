@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JRefreshHeader.h"
+#import "JRefreshFooter.h"
 
 @interface RefreshTableViewController : UITableViewController
+
+/** 下拉刷新控件 */
+@property (strong, nonatomic) JRefreshHeader *header;
+/** 上拉刷新控件 */
+@property (strong, nonatomic) JRefreshFooter *footer;
 
 @end

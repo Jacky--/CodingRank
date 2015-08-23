@@ -18,7 +18,7 @@
 {
     self = [super initWithRootViewController:rootViewController];
     if (self) {
-        self.statusBarStyle = UIStatusBarStyleLightContent;
+        self.statusBarStyle = UIStatusBarStyleDefault;
     }
     return self;
 }

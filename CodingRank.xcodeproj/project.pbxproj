@@ -15,6 +15,7 @@
 		850E97D01B4FAE2C003BC68D /* CodingRankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97CF1B4FAE2C003BC68D /* CodingRankTests.m */; };
 		850E97DC1B4FBDE0003BC68D /* JNetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97DB1B4FBDE0003BC68D /* JNetworkAgent.m */; };
 		850E97DF1B4FBDFA003BC68D /* JBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 850E97DE1B4FBDFA003BC68D /* JBaseRequest.m */; };
+		852F0B0A1B89B0A700B52BBA /* UsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 852F0B091B89B0A700B52BBA /* UsersApi.m */; };
 		8540669A1B57F6CE000A734E /* UserRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 854066991B57F6CE000A734E /* UserRankViewController.m */; };
 		8540669D1B57F6F2000A734E /* RepositoryRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540669C1B57F6F2000A734E /* RepositoryRankViewController.m */; };
 		854066A01B57F71A000A734E /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540669F1B57F71A000A734E /* MoreViewController.m */; };
@@ -57,6 +58,9 @@
 		850E97DB1B4FBDE0003BC68D /* JNetworkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JNetworkAgent.m; path = JNetwork/JNetworkAgent.m; sourceTree = "<group>"; };
 		850E97DD1B4FBDFA003BC68D /* JBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBaseRequest.h; path = JNetwork/JBaseRequest.h; sourceTree = "<group>"; };
 		850E97DE1B4FBDFA003BC68D /* JBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBaseRequest.m; path = JNetwork/JBaseRequest.m; sourceTree = "<group>"; };
+		852F0B081B89B0A700B52BBA /* UsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UsersApi.h; path = UserBank/Model/UsersApi.h; sourceTree = "<group>"; };
+		852F0B091B89B0A700B52BBA /* UsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UsersApi.m; path = UserBank/Model/UsersApi.m; sourceTree = "<group>"; };
+		852F0B0C1B89B2A500B52BBA /* HttpConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpConstant.h; sourceTree = "<group>"; };
 		8538F9571B50FDA000448717 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		854066981B57F6CE000A734E /* UserRankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserRankViewController.h; path = UserBank/Controller/UserRankViewController.h; sourceTree = "<group>"; };
 		854066991B57F6CE000A734E /* UserRankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserRankViewController.m; path = UserBank/Controller/UserRankViewController.m; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		850E97B21B4FAE2C003BC68D /* CodingRank */ = {
 			isa = PBXGroup;
 			children = (
+				852F0B0B1B89B24E00B52BBA /* Constant */,
 				854066941B57F679000A734E /* More */,
 				854066931B57F666000A734E /* RepositoryRank */,
 				854066921B57F65B000A734E /* UserBank */,
@@ -190,9 +195,27 @@
 			name = JNetwork;
 			sourceTree = "<group>";
 		};
+		852F0B071B89B03200B52BBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				852F0B081B89B0A700B52BBA /* UsersApi.h */,
+				852F0B091B89B0A700B52BBA /* UsersApi.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		852F0B0B1B89B24E00B52BBA /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				852F0B0C1B89B2A500B52BBA /* HttpConstant.h */,
+			);
+			name = Constant;
+			sourceTree = "<group>";
+		};
 		854066921B57F65B000A734E /* UserBank */ = {
 			isa = PBXGroup;
 			children = (
+				852F0B071B89B03200B52BBA /* Model */,
 				854066951B57F683000A734E /* Controller */,
 			);
 			name = UserBank;
@@ -217,8 +240,8 @@
 		854066951B57F683000A734E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8540669E1B57F71A000A734E /* MoreViewController.h */,
-				8540669F1B57F71A000A734E /* MoreViewController.m */,
+				854066981B57F6CE000A734E /* UserRankViewController.h */,
+				854066991B57F6CE000A734E /* UserRankViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -235,8 +258,8 @@
 		854066971B57F693000A734E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				854066981B57F6CE000A734E /* UserRankViewController.h */,
-				854066991B57F6CE000A734E /* UserRankViewController.m */,
+				8540669E1B57F71A000A734E /* MoreViewController.h */,
+				8540669F1B57F71A000A734E /* MoreViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -417,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CA08FB1B53FD55007659A8 /* DebugView.m in Sources */,
+				852F0B0A1B89B0A700B52BBA /* UsersApi.m in Sources */,
 				8540669A1B57F6CE000A734E /* UserRankViewController.m in Sources */,
 				85B4D2461B5695FB00E629E1 /* JRefreshHeader.m in Sources */,
 				85B4D2451B5695FB00E629E1 /* JRefreshFooter.m in Sources */,
